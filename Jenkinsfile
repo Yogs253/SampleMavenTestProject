@@ -16,13 +16,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn -Dmaven.test.failure.ignore=true clean package'
+                sh 'mvn -Dmaven.test.failure.ignore=true clean package'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'mvn test'
+                sh 'mvn test'
             }
             post {
                 always {
