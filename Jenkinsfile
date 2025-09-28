@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                echo 'Pipeline started successfully!'
                 git branch: 'main',
                     url: 'https://github.com/Yogs253/SampleMavenTestProject.git'
             }
@@ -16,12 +17,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true clean package'
+                echo 'Building project...'
+                //sh 'mvn -Dmaven.test.failure.ignore=true clean package'
             }
         }
 
         stage('Test') {
             steps {
+                 echo 'Running tests...'
                 sh 'mvn test'
             }
             post {
